@@ -1,0 +1,75 @@
+$color-text: #ecf0f1;
+$color-text-secondary: #bdc3c7;
+$color-navy: #1b263b;
+$color-border: #34495e;
+$color-info: #0077b6;
+
+.filter-panel {
+  h4 {
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $color-text-secondary;
+    letter-spacing: 0.5px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 11px;
+    color: $color-text-secondary;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .form-control {
+    padding: 8px;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: $color-text;
+    font-size: 12px;
+
+    &:focus {
+      outline: none;
+      border-color: $color-info;
+      background-color: rgba(0, 119, 182, 0.1);
+    }
+
+    &::placeholder {
+      color: $color-text-secondary;
+    }
+
+    option {
+      background-color: $color-navy;
+      color: $color-text;
+    }
+  }
+}
+
+.btn-reset {
+  padding: 8px 12px;
+  background-color: rgba($color-info, 0.2);
+  border: 1px solid $color-info;
+  color: $color-info;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: rgba($color-info, 0.3);
+  }
+}

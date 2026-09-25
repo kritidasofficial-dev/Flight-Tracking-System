@@ -1,0 +1,35 @@
+<div class="kpi-grid">
+  <ng-container *ngIf="metrics$ | async as metrics">
+    <app-kpi-card
+      title="Total Flights"
+      [value]="metrics.totalFlights"
+      status="info"
+      icon="✈️"
+      (click)="onKPIClick('total')"
+    ></app-kpi-card>
+
+    <app-kpi-card
+      title="Active Flights"
+      [value]="metrics.activeFlights"
+      status="success"
+      icon="🟢"
+      (click)="onKPIClick('on-time')"
+    ></app-kpi-card>
+
+    <app-kpi-card
+      title="Delayed Flights"
+      [value]="metrics.delayedFlights"
+      status="warning"
+      icon="⏱️"
+      (click)="onKPIClick('delayed')"
+    ></app-kpi-card>
+
+    <app-kpi-card
+      title="Arrived Flights"
+      [value]="metrics.arrivedFlights"
+      status="success"
+      icon="✓"
+      (click)="onKPIClick('arrived')"
+    ></app-kpi-card>
+  </ng-container>
+</div>

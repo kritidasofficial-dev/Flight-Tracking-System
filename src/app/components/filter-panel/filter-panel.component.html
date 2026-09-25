@@ -1,0 +1,49 @@
+<div class="filter-panel">
+  <h4>Advanced Filters</h4>
+
+  <form [formGroup]="filterForm">
+    <div class="form-group">
+      <label for="callsign">Callsign</label>
+      <input
+        type="text"
+        id="callsign"
+        formControlName="callsign"
+        placeholder="e.g., AAL101"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select id="status" formControlName="status" class="form-control">
+        <option *ngFor="let option of statusOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="origin">Origin</label>
+      <select id="origin" formControlName="originCode" class="form-control">
+        <option value="">All Origins</option>
+        <option *ngFor="let code of (uniqueAirportCodes$ | async)" [value]="code">
+          {{ code }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="destination">Destination</label>
+      <select id="destination" formControlName="destinationCode" class="form-control">
+        <option value="">All Destinations</option>
+        <option *ngFor="let code of (uniqueAirportCodes$ | async)" [value]="code">
+          {{ code }}
+        </option>
+      </select>
+    </div>
+
+    <button type="button" (click)="resetFilters()" class="btn-reset">
+      Reset Filters
+    </button>
+  </form>
+</div>

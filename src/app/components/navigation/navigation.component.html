@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <span class="brand-icon">✈️</span>
+      <h1>Flight Ops Dashboard</h1>
+    </div>
+
+    <div class="search-container">
+      <input
+        type="text"
+        [formControl]="searchControl"
+        placeholder="Search by Callsign (e.g., AAL101)"
+        class="search-input"
+        aria-label="Search flights by callsign"
+      />
+      <button
+        *ngIf="searchControl.value"
+        (click)="clearSearch()"
+        class="search-clear"
+        aria-label="Clear search"
+      >
+        ✕
+      </button>
+    </div>
+
+    <div class="navbar-actions">
+      <button
+        (click)="toggleTheme()"
+        class="theme-toggle"
+        [attr.aria-label]="(theme$ | async) === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+      >
+        {{ (theme$ | async) === 'dark' ? '☀️' : '🌙' }}
+      </button>
+    </div>
+  </div>
+</nav>

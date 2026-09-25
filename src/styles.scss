@@ -1,0 +1,64 @@
+$color-navy: #1b263b;
+$color-navy-light: #2d3e50;
+$color-success: #06d6a0;
+$color-warning: #ffd166;
+$color-info: #0077b6;
+$color-text: #ecf0f1;
+$color-text-secondary: #bdc3c7;
+$color-border: #34495e;
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #0f1419;
+  color: $color-text;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+app-root { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+h1, h2, h3, h4, h5, h6 { font-weight: 600; margin-bottom: 16px; }
+h1 { font-size: 24px; }
+h2 { font-size: 20px; }
+h3 { font-size: 16px; }
+
+button, [type="button"], [type="submit"] {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  transition: all 0.3s ease-in-out;
+  &:hover { opacity: 0.9; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+input, select, textarea {
+  font-family: inherit;
+  padding: 8px 16px;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  background-color: $color-navy;
+  color: $color-text;
+  &:focus { outline: none; border-color: $color-info; }
+  &::placeholder { color: $color-text-secondary; }
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: $color-navy; }
+::-webkit-scrollbar-thumb { background: #415a7a; border-radius: 4px; }
+
+.leaflet-container { background-color: $color-navy; }
+.leaflet-popup-content-wrapper {
+  background-color: $color-navy-light;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  .leaflet-popup-content { color: $color-text; }
+}
+
+.text-success { color: $color-success; }
+.text-warning { color: $color-warning; }

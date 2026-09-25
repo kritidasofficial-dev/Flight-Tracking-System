@@ -1,0 +1,13 @@
+<div class="dashboard-container">
+  <app-kpi-grid></app-kpi-grid>
+
+  <div class="dashboard-content">
+    <app-leaflet-map [flights]="filteredFlights$ | async"></app-leaflet-map>
+
+    <app-sidebar
+      [isOpen]="sidebarOpen"
+      [selectedFlight]="selectedFlight$ | async"
+      (toggle)="toggleSidebar()"
+    ></app-sidebar>
+  </div>
+</div>

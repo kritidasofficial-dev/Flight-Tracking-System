@@ -1,0 +1,71 @@
+<div class="flight-detail" *ngIf="flight">
+  <div class="detail-section">
+    <div class="detail-header">
+      <h3>{{ flight.flightNumber }}</h3>
+      <span class="status-badge" [ngClass]="'status-' + getStatusColor(flight.status)">
+        {{ getStatusIcon(flight.status) }} {{ flight.status | titlecase }}
+      </span>
+    </div>
+
+    <div class="detail-item">
+      <label>Callsign</label>
+      <p>{{ flight.callsign }}</p>
+    </div>
+
+    <div class="detail-item">
+      <label>Aircraft Type</label>
+      <p>{{ flight.aircraftType }}</p>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h4>Route</h4>
+    <div class="route-info">
+      <div class="airport">
+        <p class="airport-code">{{ flight.origin.code }}</p>
+        <p class="airport-name">{{ flight.origin.name }}</p>
+      </div>
+      <div class="route-arrow">→</div>
+      <div class="airport">
+        <p class="airport-code">{{ flight.destination.code }}</p>
+        <p class="airport-name">{{ flight.destination.name }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h4>Schedule</h4>
+    <div class="detail-item">
+      <label>Departure</label>
+      <p>{{ flight.estimatedDepartureTime | date: 'short' }}</p>
+    </div>
+    <div class="detail-item">
+      <label>Arrival</label>
+      <p>{{ flight.estimatedArrivalTime | date: 'short' }}</p>
+    </div>
+    <div class="detail-item" *ngIf="flight.delayMinutes">
+      <label>Delay</label>
+      <p class="text-warning">{{ flight.delayMinutes }} minutes</p>
+    </div>
+  </div>
+
+  <div class="detail-section" *ngIf="flight.currentPosition">
+    <h4>Current Position</h4>
+    <div class="detail-item">
+      <label>Latitude</label>
+      <p>{{ flight.currentPosition.lat | number: '1.4-4' }}</p>
+    </div>
+    <div class="detail-item">
+      <label>Longitude</label>
+      <p>{{ flight.currentPosition.lng | number: '1.4-4' }}</p>
+    </div>
+    <div class="detail-item" *ngIf="flight.altitude">
+      <label>Altitude</label>
+      <p>{{ flight.altitude | number: '1.0-0' }} ft</p>
+    </div>
+    <div class="detail-item" *ngIf="flight.speed">
+      <label>Speed</label>
+      <p>{{ flight.speed | number: '1.0-0' }} knots</p>
+    </div>
+  </div>
+</div>

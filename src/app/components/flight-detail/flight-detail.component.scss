@@ -1,0 +1,130 @@
+$color-text: #ecf0f1;
+$color-text-secondary: #bdc3c7;
+$color-success: #06d6a0;
+$color-warning: #ffd166;
+$color-danger: #ef476f;
+$color-info: #0077b6;
+$color-border: #34495e;
+
+.flight-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-section {
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+  border-radius: 6px;
+
+  h4 {
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $color-text-secondary;
+    letter-spacing: 0.5px;
+  }
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    color: $color-text;
+  }
+
+  .status-badge {
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &.status-success {
+      background-color: rgba($color-success, 0.2);
+      color: $color-success;
+    }
+
+    &.status-warning {
+      background-color: rgba($color-warning, 0.2);
+      color: $color-warning;
+    }
+
+    &.status-danger {
+      background-color: rgba($color-danger, 0.2);
+      color: $color-danger;
+    }
+
+    &.status-info {
+      background-color: rgba($color-info, 0.2);
+      color: $color-info;
+    }
+  }
+}
+
+.detail-item {
+  margin-bottom: 12px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  label {
+    display: block;
+    font-size: 11px;
+    color: $color-text-secondary;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: $color-text;
+    font-weight: 500;
+
+    &.text-warning {
+      color: $color-warning;
+    }
+  }
+}
+
+.route-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .airport {
+    flex: 1;
+    padding: 8px;
+    background-color: rgba(0, 119, 182, 0.1);
+    border-radius: 4px;
+    border-left: 3px solid $color-info;
+
+    .airport-code {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: $color-info;
+    }
+
+    .airport-name {
+      margin: 4px 0 0 0;
+      font-size: 11px;
+      color: $color-text-secondary;
+    }
+  }
+
+  .route-arrow {
+    color: $color-text-secondary;
+    font-weight: bold;
+  }
+}

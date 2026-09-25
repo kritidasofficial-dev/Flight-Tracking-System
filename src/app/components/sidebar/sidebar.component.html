@@ -1,0 +1,25 @@
+<div class="sidebar" [class.open]="isOpen">
+  <button class="sidebar-toggle" (click)="onToggle()" [attr.aria-label]="isOpen ? 'Close sidebar' : 'Open sidebar'">
+    {{ isOpen ? '→' : '←' }}
+  </button>
+
+  <div class="sidebar-content" *ngIf="isOpen">
+    <div class="sidebar-header">
+      <h2>Flight Details</h2>
+    </div>
+
+    <ng-container *ngIf="selectedFlight; else noSelection">
+      <app-flight-detail [flight]="selectedFlight"></app-flight-detail>
+    </ng-container>
+
+    <ng-template #noSelection>
+      <div class="no-selection">
+        <p>Select a flight to view details</p>
+      </div>
+    </ng-template>
+
+    <div class="sidebar-footer">
+      <app-filter-panel></app-filter-panel>
+    </div>
+  </div>
+</div>

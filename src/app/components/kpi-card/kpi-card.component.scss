@@ -1,0 +1,65 @@
+$color-success: #06d6a0;
+$color-warning: #ffd166;
+$color-danger: #ef476f;
+$color-info: #0077b6;
+$color-text: #ecf0f1;
+
+.kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .kpi-icon {
+    font-size: 32px;
+  }
+
+  .kpi-content {
+    flex: 1;
+
+    .kpi-title {
+      margin: 0;
+      font-size: 12px;
+      color: rgba(236, 240, 241, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .kpi-value {
+      margin: 4px 0 0 0;
+      font-size: 28px;
+      font-weight: 700;
+      color: $color-text;
+    }
+  }
+
+  &.status-success {
+    border-color: rgba($color-success, 0.3);
+    &:hover { background-color: rgba($color-success, 0.05); }
+  }
+
+  &.status-warning {
+    border-color: rgba($color-warning, 0.3);
+    &:hover { background-color: rgba($color-warning, 0.05); }
+  }
+
+  &.status-danger {
+    border-color: rgba($color-danger, 0.3);
+    &:hover { background-color: rgba($color-danger, 0.05); }
+  }
+
+  &.status-info {
+    border-color: rgba($color-info, 0.3);
+    &:hover { background-color: rgba($color-info, 0.05); }
+  }
+}
