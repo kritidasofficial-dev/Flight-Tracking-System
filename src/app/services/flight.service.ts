@@ -46,9 +46,7 @@ export class FlightService {
   getFilteredFlights(): Observable<Flight[]> {
     return this.filters$.pipe(
       map(filters => {
-        console.log('🔧 getFilteredFlights() - Current filters:', filters);
         const result = this.applyFilters(this.flights$.value, filters);
-        console.log('✅ Filtered result:', result.length, 'flights');
         return result;
       })
     );
@@ -63,58 +61,46 @@ export class FlightService {
   }
 
   updateFilters(filters: FlightFilter): void {
-    console.log('📍 FlightService.updateFilters():', filters);
     this.filters$.next(filters);
   }
 
   searchByCallsign(callsign: string): Flight | null {
   const searchTerm = callsign.trim().toUpperCase();
-  console.log('🔍 Searching for callsign:', searchTerm);
   
   const flight = this.flights$.value.find(f => 
     f.callsign.toUpperCase() === searchTerm || 
     f.flightNumber.toUpperCase() === searchTerm
   );
   
-  console.log('✅ Search result:', flight ? flight.callsign : 'NOT FOUND');
   return flight || null;
 }
 
   private applyFilters(flights: Flight[], filters: FlightFilter): Flight[] {
-  console.log('🔧 applyFilters() called');
-  console.log('   Input flights:', flights.length);
-  console.log('   Filters:', filters);
-  
   let filtered = [...flights];
 
   // Filter by callsign (case-insensitive, partial match)
   if (filters.callsign) {
     const searchTerm = filters.callsign.trim().toUpperCase();
     filtered = filtered.filter(f => f.callsign.toUpperCase().includes(searchTerm));
-    console.log('   After callsign filter ("' + filters.callsign + '"):', filtered.length);
   }
 
   // Filter by status (exact match)
   if (filters.status) {
     filtered = filtered.filter(f => f.status === filters.status);
-    console.log('   After status filter ("' + filters.status + '"):', filtered.length);
   }
 
   // Filter by origin (exact match)
   if (filters.originCode) {
     const origin = filters.originCode.trim().toUpperCase();
     filtered = filtered.filter(f => f.origin.code === origin);
-    console.log('   After origin filter ("' + origin + '"):', filtered.length);
   }
 
   // Filter by destination (exact match)
   if (filters.destinationCode) {
     const destination = filters.destinationCode.trim().toUpperCase();
     filtered = filtered.filter(f => f.destination.code === destination);
-    console.log('   After destination filter ("' + destination + '"):', filtered.length);
   }
 
-  console.log('✅ Final result:', filtered.length, 'flights');
   return filtered;
 }
 

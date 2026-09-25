@@ -28,15 +28,11 @@ export class NavigationComponent implements OnInit {
         distinctUntilChanged()
       )
       .subscribe(value => {
-        console.log('🔍 Search value changed:', value);
-        
         if (value && value.trim().length > 0) {
           const flight = this.flightService.searchByCallsign(value.trim());
-          console.log('✅ Flight found:', flight?.callsign);
           
           if (flight) {
             this.flightService.selectFlight(flight);
-            console.log('✅ Flight selected:', flight.callsign);
           } else {
             console.warn('⚠️ Flight not found:', value);
           }
@@ -45,24 +41,20 @@ export class NavigationComponent implements OnInit {
   }
 
   toggleTheme(): void {
-    console.log('🌓 Theme toggle clicked');
     this.themeService.toggleTheme();
   }
 
   clearSearch(): void {
-    console.log('🗑️ Clearing search');
     this.searchControl.reset();
   }
 
   onSearchEnter(event: any): void {
     const value = event.target.value;
-    console.log('🔍 Manual search triggered:', value);
     
     if (value && value.trim().length > 0) {
       const flight = this.flightService.searchByCallsign(value.trim());
       if (flight) {
         this.flightService.selectFlight(flight);
-        console.log('✅ Flight selected:', flight.callsign);
       } else {
         console.warn('⚠️ Flight not found:', value);
       }

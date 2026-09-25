@@ -15,18 +15,11 @@ export class FlightListComponent implements OnInit {
   constructor(private flightService: FlightService) {}
 
   ngOnInit(): void {
-    console.log('🔧 FlightListComponent ngOnInit');
     // Subscribe to filtered flights
     this.filteredFlights$ = this.flightService.getFilteredFlights();
-    
-    // Log changes
-    this.filteredFlights$.subscribe(flights => {
-      console.log('📋 Flight list updated:', flights.length, 'flights');
-    });
   }
 
   selectFlight(flight: Flight): void {
-    console.log('🔧 Flight selected from list:', flight.callsign);
     this.flightService.selectFlight(flight);
   }
 

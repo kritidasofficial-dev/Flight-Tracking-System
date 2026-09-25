@@ -53,32 +53,26 @@ export class FilterPanelComponent implements OnInit {
 
   private applyFilters(): void {
     const formValues = this.filterForm.value;
-    console.log('🔧 FilterPanel - Form values:', formValues);
     
     const filters: any = {};
     
     // Only add non-empty filters
     if (formValues.status && formValues.status.trim()) {
       filters.status = formValues.status;
-      console.log('   Adding status filter:', filters.status);
     }
     
     if (formValues.originCode && formValues.originCode.trim()) {
       filters.originCode = formValues.originCode;
-      console.log('   Adding origin filter:', filters.originCode);
     }
     
     if (formValues.destinationCode && formValues.destinationCode.trim()) {
       filters.destinationCode = formValues.destinationCode;
-      console.log('   Adding destination filter:', filters.destinationCode);
     }
 
-    console.log('📍 Final filters to apply:', filters);
     this.flightService.updateFilters(filters);
   }
 
   resetFilters(): void {
-    console.log('🔄 Resetting all filters');
     this.filterForm.reset({
       status: '',
       originCode: '',

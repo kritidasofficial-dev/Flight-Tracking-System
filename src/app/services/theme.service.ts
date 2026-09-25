@@ -31,14 +31,12 @@ export class ThemeService {
 
   toggleTheme(): void {
     const newTheme = this.theme$.value === 'dark' ? 'light' : 'dark';
-    console.log('🌓 Toggling theme to:', newTheme);
     this.theme$.next(newTheme);
     this.applyTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   }
 
   private applyTheme(theme: Theme): void {
-    console.log('🎨 Applying theme:', theme);
     const root = document.documentElement;
     
     if (theme === 'dark') {
