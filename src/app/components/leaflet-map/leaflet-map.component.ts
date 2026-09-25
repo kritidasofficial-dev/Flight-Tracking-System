@@ -40,7 +40,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges {
 
   private initializeMap(): void {
     if (!this.mapContainer) {
-      console.error('❌ mapContainer is null');
+      console.error('mapContainer is null');
       return;
     }
 
@@ -52,7 +52,6 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges {
 
       // Add tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
         maxZoom: 19
       }).addTo(this.map);
 
@@ -105,7 +104,7 @@ export class LeafletMapComponent implements AfterViewInit, OnChanges {
           opacity: 1,
           fillOpacity: 0.8
         })
-          .bindPopup(`<strong>${flight.callsign}</strong><br>${flight.origin.code} → ${flight.destination.code}`)
+          .bindPopup(`<strong>${flight.flightNumber}</strong><br><strong>${flight.callsign}</strong><br>${flight.origin.code} → ${flight.destination.code}`)
           .addTo(this.markerClusterGroup);
 
         marker.on('click', () => this.selectFlight(flight));

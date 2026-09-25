@@ -4,6 +4,7 @@ import { FlightService } from '../../services/flight.service';
 import { AirportService } from '../../services/airport.service';
 import { Observable } from 'rxjs';
 import { Airport } from '../../models/airport.model';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-filter-panel',
@@ -17,7 +18,7 @@ export class FilterPanelComponent implements OnInit {
   uniqueAirportCodes$: Observable<string[]>;
 
   statusOptions = [
-    { value: null, label: 'All Statuses' },
+    { value: '', label: 'All Statuses' },
     { value: 'on-time', label: 'On-Time' },
     { value: 'delayed', label: 'Delayed' },
     { value: 'boarding', label: 'Boarding' },
@@ -37,19 +38,52 @@ export class FilterPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.filterForm = this.fb.group({
-      callsign: [''],
-      status: [null],
-      originCode: [null],
-      destinationCode: [null]
+      status: [''],
+      originCode: [''],
+      destinationCode: ['']
     });
 
-    this.filterForm.valueChanges.subscribe(filters => {
-      this.flightService.updateFilters(filters);
-    });
+    // Listen to form changes with debounce
+    this.filterForm.valueChanges
+      .pipe(debounceTime(300))
+      .subscribe(() => {
+        this.applyFilters();
+      });
+  }
+
+  private applyFilters(): void {
+    const formValues = this.filterForm.value;
+    console.log('🔧 FilterPanel - Form values:', formValues);
+    
+    const filters: any = {};
+    
+    // Only add non-empty filters
+    if (formValues.status && formValues.status.trim()) {
+      filters.status = formValues.status;
+      console.log('   Adding status filter:', filters.status);
+    }
+    
+    if (formValues.originCode && formValues.originCode.trim()) {
+      filters.originCode = formValues.originCode;
+      console.log('   Adding origin filter:', filters.originCode);
+    }
+    
+    if (formValues.destinationCode && formValues.destinationCode.trim()) {
+      filters.destinationCode = formValues.destinationCode;
+      console.log('   Adding destination filter:', filters.destinationCode);
+    }
+
+    console.log('📍 Final filters to apply:', filters);
+    this.flightService.updateFilters(filters);
   }
 
   resetFilters(): void {
-    this.filterForm.reset();
+    console.log('🔄 Resetting all filters');
+    this.filterForm.reset({
+      status: '',
+      originCode: '',
+      destinationCode: ''
+    });
     this.flightService.updateFilters({});
   }
 }

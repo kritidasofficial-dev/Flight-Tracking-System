@@ -15,6 +15,7 @@ import { LeafletMapComponent } from './components/leaflet-map/leaflet-map.compon
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FlightDetailComponent } from './components/flight-detail/flight-detail.component';
 import { FilterPanelComponent } from './components/filter-panel/filter-panel.component';
+import { FlightListComponent } from './components/flight-list/flight-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FilterPanelComponent } from './components/filter-panel/filter-panel.com
     LeafletMapComponent,
     SidebarComponent,
     FlightDetailComponent,
-    FilterPanelComponent
+    FilterPanelComponent,
+    FlightListComponent
   ],
   imports: [
     BrowserModule,

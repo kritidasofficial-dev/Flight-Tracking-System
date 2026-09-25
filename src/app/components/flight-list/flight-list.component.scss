@@ -1,0 +1,148 @@
+$color-text: #ecf0f1;
+$color-text-secondary: #bdc3c7;
+$color-success: #06d6a0;
+$color-warning: #ffd166;
+$color-danger: #ef476f;
+$color-info: #0077b6;
+$color-border: #34495e;
+
+.flight-list {
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+
+  h3 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: $color-text;
+  }
+}
+
+.flight-count {
+  font-size: 12px;
+  color: $color-text-secondary;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.flights-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flight-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid $color-info;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateX(4px);
+  }
+
+  .flight-number {
+    font-size: 14px;
+    font-weight: 700;
+    color: $color-info;
+    min-width: 60px;
+  }
+
+  .flight-info {
+    flex: 1;
+
+    .callsign {
+      margin: 0;
+      font-size: 12px;
+      color: $color-text;
+      font-weight: 500;
+    }
+
+    .route {
+      margin: 2px 0 0 0;
+      font-size: 11px;
+      color: $color-text-secondary;
+    }
+  }
+
+  .flight-status {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .status-icon {
+      font-size: 12px;
+    }
+  }
+
+  &.status-success {
+    border-left-color: $color-success;
+    .flight-status {
+      background-color: rgba($color-success, 0.2);
+      color: $color-success;
+    }
+  }
+
+  &.status-warning {
+    border-left-color: $color-warning;
+    .flight-status {
+      background-color: rgba($color-warning, 0.2);
+      color: $color-warning;
+    }
+  }
+
+  &.status-danger {
+    border-left-color: $color-danger;
+    .flight-status {
+      background-color: rgba($color-danger, 0.2);
+      color: $color-danger;
+    }
+  }
+
+  &.status-info {
+    border-left-color: $color-info;
+    .flight-status {
+      background-color: rgba($color-info, 0.2);
+      color: $color-info;
+    }
+  }
+}
+
+.no-flights {
+  padding: 20px;
+  text-align: center;
+  color: $color-text-secondary;
+  font-size: 12px;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $color-border;
+  border-radius: 3px;
+
+  &:hover {
+    background: lighten($color-border, 10%);
+  }
+}

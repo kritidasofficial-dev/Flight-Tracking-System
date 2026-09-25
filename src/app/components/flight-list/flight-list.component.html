@@ -1,0 +1,25 @@
+<div class="flight-list">
+  <h3>Filtered Flights</h3>
+  
+  <ng-container *ngIf="(filteredFlights$ | async) as flights">
+    <div class="flight-count">
+      {{ flights.length }} flight<span *ngIf="flights.length !== 1">s</span> found
+    </div>
+
+    <div class="flights-container">
+      <div
+        *ngFor="let flight of flights"
+        class="flight-item"
+        [ngClass]="'status-' + getStatusColor(flight.status)"
+        (click)="selectFlight(flight)"
+      >
+        <div class="flight-number">{{ flight.flightNumber }}</div>
+        <div class="flight-info">
+          <p class="callsign">{{ flight.callsign }}</p>
+          <p class="route">{{ flight.origin.code }} → {{ flight.destination.code }}</p>
+        </div>
+        <div class="flight-status">{{ flight.status | titlecase }}</div>
+      </div>
+    </div>
+  </ng-container>
+</div>

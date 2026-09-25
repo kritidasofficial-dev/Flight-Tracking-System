@@ -9,9 +9,10 @@
       <input
         type="text"
         [formControl]="searchControl"
-        placeholder="Search by Callsign (e.g., AAL101)"
+        placeholder="Search by Callsign or Flight # (e.g., AAL101, AA101)"
         class="search-input"
-        aria-label="Search flights by callsign"
+        aria-label="Search flights by callsign or flight number"
+        (keyup.enter)="onSearchEnter($event)"
       />
       <button
         *ngIf="searchControl.value"
@@ -28,6 +29,7 @@
         (click)="toggleTheme()"
         class="theme-toggle"
         [attr.aria-label]="(theme$ | async) === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
+        title="Toggle Dark/Light Mode"
       >
         {{ (theme$ | async) === 'dark' ? '☀️' : '🌙' }}
       </button>

@@ -1,3 +1,28 @@
+// Theme variables
+:root {
+  --bg-primary: #0f1419;
+  --bg-secondary: #1b263b;
+  --bg-tertiary: #2d3e50;
+  --text-primary: #ecf0f1;
+  --text-secondary: #bdc3c7;
+  --border-color: #34495e;
+}
+
+html[data-theme='light'] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #e8e8e8;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --border-color: #cccccc;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
 $color-navy: #1b263b;
 $color-navy-light: #2d3e50;
 $color-success: #06d6a0;
